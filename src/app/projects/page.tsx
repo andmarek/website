@@ -16,6 +16,20 @@ interface ProjectTileProps {
 export default function Projects(): React.JSX.Element {
   const projects = [
     {
+      name: "Capitol Hill Running Club",
+      imagePath: "/chrc-website.png",
+      description: "A homepage for the Capitol Hill Running Club.",
+      techStack: ["SvelteKit", "TypeScript", "TailwindCSS", "Vercel"],
+      link: "https://caphillrunclub.com",
+    },
+    {
+      name: "Who Added the Song",
+      imagePath: "/who-added-the-song.png",
+      description: "A game where you guess who added the song to a collaborative Spotify playlist",
+      techStack: ["NextJs", "TypeScript", "TailwindCSS"],
+      link: "https://github.com/andmarek/who-added-the-song",
+    },
+    {
       name: "RetroRover",
       imagePath: "/retro-rover.png",
       description: "A free and open-source retroboard for teams to use to help with collaboration and reflection.",
@@ -30,11 +44,11 @@ export default function Projects(): React.JSX.Element {
       link: "https://pacequick.com"
     },
     {
-      name: "IntervalTreaps",
-      imagePath: "/treap_image.png",
-      description: "An interval treap implementation in Java",
-      techStack: ["Java", "Data Structures", "Algorithms"],
-      link: "https://github.com/andmarek/IntervalTreaps"
+      name: "Auto-Commit-Message",
+      imagePath: "/automessage.png",
+      description: "A CLI tool to generate a commit message based on the Git diff.",
+      techStack: ["Rust"],
+      link: "https://github.com/andmarek/auto-commit-message"
     },
     {
       name: "sshell",
@@ -50,6 +64,7 @@ export default function Projects(): React.JSX.Element {
       techStack: ["C++"],
       link: "https://github.com/andmarek/Vim-Sweep"
     },
+
   ];
   return (
     <div className="bg-raisin-black">

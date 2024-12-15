@@ -101,22 +101,17 @@ export default function About() {
           </h1>
           <div className="flex-col space-y-4">
             <p className="text-lg leading-relaxed font-light tracking-wide font-sans">
-              I&apos;m a software engineer at Optum on a team whose mission is
-              to create the next evolution of healthcare tools to empower
-              advanced analytics capabilities for billions of healthcare
-              transactions.{" "}
+              I&apos;m a software engineer living in Seattle.
             </p>
             <p className="text-lg leading-relaxed font-light tracking-wide font-sans">
-              I&apos;m originally from the Chicago-land area and I attended Iowa
-              State University and received a bachelor&apos;s of science in
-              Software Engineering in 2021. During my time there, I interned at
-              Principal Financial as a software engineer and was a software
-              engineering peer mentor for 2 years.
+            I work at Optum, where I create analytics tools for healthcare support engineers.
+              {" "}
             </p>
             <p className="text-lg leading-relaxed font-light tracking-wide font-sans">
-              Outside of tech, I&apos;m an avid runner (please follow me on
-              Strava) and dabble in cycling, climbing, rollerblading, and
-              various outdoor activities.
+              I&apos;m from Chicago, but lived in Iowa for a few years while I got my BS in Software Engineering from Iowa State University.
+            </p>
+            <p className="text-lg leading-relaxed font-light tracking-wide font-sans">
+              I&apos;m an avid competitive long distance runner and fan! Feel free to follow me on <Link href="https://www.strava.com/athletes/16371872" className="text-burnt-orange hover:text-plum transition-all">Strava</Link>.
             </p>
           </div>
         </div>
@@ -126,8 +121,7 @@ export default function About() {
         </h1>
         <div className="bg-licoric rounded-lg">
           <p className="text-lg leading-relaxed mb-4 font-light tracking-wide font-sans">
-            I listen to *a lot* of music, and so naturally I maintain a playlist
-            of my top 10 favorite songs at any given time. Below is what&apos;s
+            I listen to a lot of music, and I maintain a playlist of the current 10 songs I have in rotation. Below is what&apos;s
             currently on the list (powered by Spotify).
           </p>
           <SpotifyPlaylists />

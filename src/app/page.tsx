@@ -29,11 +29,10 @@ export default function Home() {
           <Hero onUpdateLoadState={handleLoadedChange} />
         </div>
         <div className={`font-sans transition-opacity duration-1000 ease-in-out flex items-center space-x-4 justify-between text-sm ${loaded ? 'opacity-100' : 'opacity-0'}`}>
-          <HomeLinkWrapper hrefProp="https://www.linkedin.com/in/andmarek/" text="linkedin" />
           <HomeLinkWrapper hrefProp="https://github.com/andmarek" text="github" />
           <HomeLinkWrapper hrefProp="https://twitter.com/AndrewMarek" text="twitter" />
           <HomeLinkWrapper hrefProp="https://www.strava.com/athletes/16371872" text="strava" />
-
+          <HomeLinkWrapper hrefProp="https://www.linkedin.com/in/andmarek/" text="linkedin" />
         </div>
       </main>
     </div>
