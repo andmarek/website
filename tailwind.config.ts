@@ -7,19 +7,21 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    colors: {
-      "moss-green": "#959A6B",
-      "raisin-black": "#2D2424",
-      "licorice": "#1A515",
-      "van-dyke": "#453636",
-      "wenge": "#725A5A",
-      "cinereous": "#9C8181",
-      "chinese-violet": "#756D94",
-      "champagne-pink": "#DCC9BC",
-      "papaya-whip": "#FFE9C7",
-      "plum": "#7B3D79",
-    },
     extend: {
+      colors: {
+        "moss-green": "#959A6B",
+        "raisin-black": "#2D2424",
+        // Fixed typo: previously "#1A515" (invalid). Using deep near-black brown.
+        "licorice": "#1A1515",
+        "van-dyke": "#453636",
+        "wenge": "#725A5A",
+        "cinereous": "#9C8181",
+        "chinese-violet": "#756D94",
+        "champagne-pink": "#DCC9BC",
+        "papaya-whip": "#FFE9C7",
+        "plum": "#7B3D79",
+        "burnt-orange": "#CC5500",
+      },
       keyframes: {
         blink: {
           '0%, 100%': { opacity: '1' },
@@ -44,7 +46,6 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
-      colors: {},
     },
   },
   plugins: [],

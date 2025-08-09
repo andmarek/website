@@ -5,6 +5,7 @@ import NavBar from "../components/NavBar";
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import { Analytics } from "@vercel/analytics/react"
+import Footer from "../components/Footer";
 
 
 
@@ -28,6 +29,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <NavBar />
         {children}
+        <Footer />
+        <Analytics />
       </body>
     </html>
   )

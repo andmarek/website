@@ -21,7 +21,7 @@ export default function DynamicText() {
     }, 2000); // change every 2 seconds
 
     return () => clearInterval(interval);
-  }, []);
+  }, [phrases.length]);
 
   return (
     <h1 className={`transition-all duration-500 ease-in-out ${animation}`}>
