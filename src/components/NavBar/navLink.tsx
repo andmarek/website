@@ -17,8 +17,8 @@ export default function NavLink(props: NavLinkProps): React.JSX.Element {
       className={
         `font-sans rounded-md px-3 py-2 text-sm md:text-base transition-colors duration-300 ` +
         (isActive
-          ? 'text-papaya-whip bg-white/5'
-          : 'text-champagne-pink hover:text-papaya-whip hover:bg-white/5')
+          ? 'text-gray-900 bg-black/5 dark:text-papaya-whip dark:bg-white/5'
+          : 'text-gray-700 hover:text-gray-900 hover:bg-black/5 dark:text-champagne-pink dark:hover:text-papaya-whip dark:hover:bg-white/5')
       }
       href={props.destination}
     >

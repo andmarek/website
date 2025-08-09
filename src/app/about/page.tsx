@@ -93,13 +93,13 @@ function SpotifyPlaylists() {
 
 export default function About() {
   return (
-    <div className="bg-raisin-black text-cinereous min-h-screen px-4 py-10 font-sans">
+    <div className="bg-white text-gray-700 dark:bg-raisin-black dark:text-cinereous min-h-screen px-4 py-10 font-sans">
       <div className="max-w-3xl mx-auto">
         <div id="intro" className="mb-12">
-          <h1 className="text-4xl text-papaya-whip mb-2 tracking-tight leading-tight font-sans">
+          <h1 className="text-4xl text-gray-900 dark:text-papaya-whip mb-2 tracking-tight leading-tight font-sans">
             about
           </h1>
-          <div className="flex-col space-y-4 text-champagne-pink/90">
+          <div className="flex-col space-y-4 text-gray-700/90 dark:text-champagne-pink/90">
             <p className="text-lg leading-relaxed font-light tracking-wide font-sans">
               I&apos;m a software engineer living in Seattle.
             </p>
@@ -116,11 +116,11 @@ export default function About() {
           </div>
         </div>
 
-        <h1 className="text-3xl text-papaya-whip mb-4 tracking-tight leading-tight font-sans">
+        <h1 className="text-3xl text-gray-900 dark:text-papaya-whip mb-4 tracking-tight leading-tight font-sans">
           current 10
         </h1>
-        <div className="rounded-lg border border-white/10 bg-white/5 p-4">
-          <p className="text-lg leading-relaxed mb-4 font-light tracking-wide text-champagne-pink/90 font-sans">
+        <div className="rounded-lg border border-black/10 bg-black/[0.02] p-4 dark:border-white/10 dark:bg-white/5">
+          <p className="text-lg leading-relaxed mb-4 font-light tracking-wide text-gray-700/90 dark:text-champagne-pink/90 font-sans">
             I listen to a lot of music, and I maintain a playlist of the current 10 songs I have in rotation. Below is what&apos;s
             currently on the list (powered by Spotify).
           </p>

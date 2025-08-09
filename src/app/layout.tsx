@@ -6,6 +6,7 @@ import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import { Analytics } from "@vercel/analytics/react"
 import Footer from "../components/Footer";
+import Providers from "./providers";
 
 
 
@@ -22,15 +23,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`} suppressHydrationWarning>
       <head>
         <title> andmarek </title>
       </head>
       <body className={inter.className}>
-        <NavBar />
-        {children}
-        <Footer />
-        <Analytics />
+        <Providers>
+          <NavBar />
+          {children}
+          <Footer />
+          <Analytics />
+        </Providers>
       </body>
     </html>
   )
