@@ -23,7 +23,7 @@ const fetchPlaylist = async () => {
     );
     const accessToken = tokenResponse.data.access_token;
     const playlistResponse = await axios.get(
-      "https://api.spotify.com/v1/playlists/15HVxOaAQS1RquOtu0Ije2/tracks",
+      "https://api.spotify.com/v1/playlists/15HVxOaAQS1RquOtu0Ije2/tracks?fields=items(track(id,name,external_urls,artists(name,external_urls),album(images)))",
       {
         headers: {
           Authorization: "Bearer " + accessToken,

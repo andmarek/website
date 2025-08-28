@@ -18,6 +18,15 @@ type Track = {
       external_urls: ExternalUrls;
     }
   ];
+  album: {
+    images: [
+      {
+        url: string;
+        height: number;
+        width: number;
+      }
+    ];
+  };
 };
 
 type Playlist = {
@@ -66,27 +75,32 @@ function SpotifyPlaylists() {
 
   // Render playlists if not loading and no error
   return (
-    <section className="hover:border-moss-green transition-all duration-300 rounded-lg p-2">
-      <ul className="mt-4">
+    <section className="p-4">
+      <div className="grid grid-cols-5 gap-4">
         {playlists?.items?.map((item, index) => (
-          <div className="grid grid-cols-2" key={index}>
-            <Link
-              href={item.track.external_urls.spotify}
-              className="font-sans transition-all duration-300 p-2 hover:text-papaya-whip text-champagne-pink"
-              key={item.track.id}
-            >
-              {index + 1}. {item.track.name} {" "}
-            </Link>
-            <Link
-              href={item.track.artists[0].external_urls.spotify}
-              className="p-2 font-sans text-chinese-violet hover:text-plum transition-all"
-              key={`${item.track.artists[0].name}-${index}`}
-            >
-              {item.track.artists[0].name}{" "}
-            </Link>
-          </div>
+          <Link
+            href={item.track.external_urls.spotify}
+            key={item.track.id}
+            className="group relative aspect-square overflow-hidden rounded-lg bg-licoric hover:scale-105 transition-all duration-300"
+          >
+            <img
+              src={item.track.album.images[0]?.url}
+              alt={`${item.track.name} album cover`}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+              <div className="text-center p-2">
+                <h3 className="text-papaya-whip font-semibold text-sm mb-1 line-clamp-2">
+                  {item.track.name}
+                </h3>
+                <p className="text-chinese-violet text-xs line-clamp-1">
+                  {item.track.artists[0].name}
+                </p>
+              </div>
+            </div>
+          </Link>
         ))}
-      </ul>
+      </div>
     </section>
   );
 }
