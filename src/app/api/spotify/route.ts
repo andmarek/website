@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { NextApiRequest, NextApiResponse } from 'next';
+
 
 export const dynamic = 'force-dynamic';
 
@@ -36,7 +36,7 @@ const fetchPlaylist = async () => {
   }
 };
 
-export async function GET(req: Request, res: Response) {
+export async function GET() {
   try {
     const data = await fetchPlaylist();
     return Response.json(data)
