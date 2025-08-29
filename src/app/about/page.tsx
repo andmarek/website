@@ -3,6 +3,7 @@
 import Link from "next/link";
 import useSWR from "swr";
 import { ThreeDots } from "react-loader-spinner";
+import { useState, useEffect } from "react";
 
 type ExternalUrls = {
   spotify: string;
@@ -49,6 +50,20 @@ function useSpotifyPlaylists() {
 }
 function SpotifyPlaylists() {
   const { playlists, isLoading, isError } = useSpotifyPlaylists();
+  const [activeTrack, setActiveTrack] = useState<string | null>(null);
+
+  // Close active overlay when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+      if (!target.closest('[data-track-tile]')) {
+        setActiveTrack(null);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
 
   // Handle loading state
   if (isLoading) {
@@ -73,33 +88,68 @@ function SpotifyPlaylists() {
     return <div>Error loading playlists.</div>;
   }
 
+  const handleTrackClick = (e: React.MouseEvent, trackId: string, spotifyUrl: string) => {
+    // On mobile/touch devices, first tap shows info, second tap navigates
+    if (activeTrack === trackId) {
+      // Second tap - navigate to Spotify
+      window.open(spotifyUrl, '_blank');
+    } else {
+      // First tap - show track info
+      e.preventDefault();
+      setActiveTrack(trackId);
+    }
+  };
+
   // Render playlists if not loading and no error
   return (
     <section className="p-4">
-      <div className="grid grid-cols-5 gap-4">
-        {playlists?.items?.map((item, index) => (
-          <Link
-            href={item.track.external_urls.spotify}
-            key={item.track.id}
-            className="group relative aspect-square overflow-hidden rounded-lg bg-licoric hover:scale-105 transition-all duration-300"
-          >
-            <img
-              src={item.track.album.images[0]?.url}
-              alt={`${item.track.name} album cover`}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-              <div className="text-center p-2">
-                <h3 className="text-papaya-whip font-semibold text-sm mb-1 line-clamp-2">
-                  {item.track.name}
-                </h3>
-                <p className="text-chinese-violet text-xs line-clamp-1">
-                  {item.track.artists[0].name}
-                </p>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
+        {playlists?.items?.map((item, index) => {
+          const isActive = activeTrack === item.track.id;
+          return (
+            <div
+              key={item.track.id}
+              data-track-tile
+              className="relative aspect-square overflow-hidden rounded-lg bg-licoric transition-all duration-300 cursor-pointer group hover:scale-105"
+              onClick={(e) => handleTrackClick(e, item.track.id, item.track.external_urls.spotify)}
+            >
+              <img
+                src={item.track.album.images[0]?.url}
+                alt={`${item.track.name} album cover`}
+                className="w-full h-full object-cover"
+              />
+              
+              {/* Desktop hover overlay */}
+              <div className="hidden sm:flex absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 items-center justify-center opacity-0 group-hover:opacity-100">
+                <div className="text-center p-2">
+                  <h3 className="text-papaya-whip font-semibold text-sm mb-1 line-clamp-2">
+                    {item.track.name}
+                  </h3>
+                  <p className="text-chinese-violet text-xs line-clamp-1">
+                    {item.track.artists[0].name}
+                  </p>
+                </div>
+              </div>
+
+              {/* Mobile tap overlay */}
+              <div className={`sm:hidden absolute inset-0 bg-black transition-all duration-300 flex items-center justify-center ${
+                isActive ? 'bg-opacity-70 opacity-100' : 'bg-opacity-0 opacity-0'
+              }`}>
+                <div className="text-center p-3">
+                  <h3 className="text-papaya-whip font-semibold text-sm mb-2 line-clamp-2">
+                    {item.track.name}
+                  </h3>
+                  <p className="text-chinese-violet text-xs mb-2 line-clamp-1">
+                    {item.track.artists[0].name}
+                  </p>
+                  <p className="text-papaya-whip text-xs opacity-75">
+                    Tap again to open in Spotify
+                  </p>
+                </div>
               </div>
             </div>
-          </Link>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
