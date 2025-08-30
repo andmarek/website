@@ -19,7 +19,7 @@ export default function Projects(): React.JSX.Element {
       name: "Capitol Hill Running Club",
       imagePath: "/chrc-website.png",
       description: "A homepage for the Capitol Hill Running Club.",
-      techStack: ["SvelteKit", "TypeScript", "TailwindCSS", "Vercel"],
+      techStack: ["SvelteKit", "TypeScript", "TailwindCSS" ],
       link: "https://caphillrunclub.com",
     },
     {
@@ -68,36 +68,63 @@ export default function Projects(): React.JSX.Element {
   ];
   return (
     <div className="bg-raisin-black">
-      <div className="min-h-screen text-mono container mx-auto p-10 bg-raisin-black">
-        <h2 className="text-champagne-pink hover:text-papaya-whip transition-all duration-300 text-3xl font-bold mb-10 font-sans">projects</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+      <div className="min-h-screen container mx-auto px-6 py-14 bg-raisin-black">
+        <h2 className="text-champagne-pink hover:text-papaya-whip transition-colors duration-300 text-4xl font-bold mb-12 tracking-tight font-sans">
+          projects
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <div
+            <Link
               key={index}
-              className="bg-van-dyke rounded-lg overflow-hidden shadow-lg bg-white dark:bg-gray-800"
+              href={project.link}
+              className="group block focus:outline-none"
+              target={project.link.startsWith('http') ? '_blank' : undefined}
+              rel={project.link.startsWith('http') ? 'noopener noreferrer' : undefined}
             >
-              <Image
-                className="w-full h-48 object-cover"
-                src={project.imagePath}
-                alt={project.name}
-                width={"300"}
-                height={"300"}
-              />
-              <div className="p-6 hover:bg-wenge transition-all duration-1000">
-                <Link href={project.link} className="hover:text-papaya-whip transition-all duration-300 text-champagne-pink text-xl font-semibold">{project.name}</Link>
-                <p className="text-sm mt-2">{project.description}</p>
-                <div className="mt-4">
-                  {project.techStack.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="inline-block bg-chinese-violet hover:bg-plum transition-all duration-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+              {/* gradient border wrapper */}
+              <div className="p-[1px] rounded-xl bg-gradient-to-br from-plum via-chinese-violet to-moss-green transition-transform duration-300 group-hover:-translate-y-1">
+                {/* card */}
+                <div className="rounded-[10px] overflow-hidden bg-van-dyke/80 backdrop-blur-sm">
+                  {/* image */}
+                  <div className="relative aspect-video overflow-hidden">
+                    <Image
+                      src={project.imagePath}
+                      alt={project.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
+                    {/* subtle overlay on hover */}
+                    <div className="absolute inset-0 bg-[#00000066] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    {/* top-right tag */}
+                    <div className="absolute top-3 right-3 rounded-full bg-raisin-black/70 px-3 py-1 text-xs text-papaya-whip">
+                      view project
+                    </div>
+                  </div>
+
+                  {/* content */}
+                  <div className="p-5">
+                    <h3 className="text-papaya-whip text-lg font-semibold tracking-tight group-hover:drop-shadow-glow">
+                      {project.name}
+                    </h3>
+                    <p className="mt-2 text-champagne-pink/80 text-sm leading-relaxed">
+                      {project.description}
+                    </p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {project.techStack.map((tech, i) => (
+                        <span
+                          key={i}
+                          className="rounded-full bg-chinese-violet/80 hover:bg-plum transition-colors duration-300 px-3 py-1 text-xs font-medium text-papaya-whip"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
