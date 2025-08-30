@@ -69,23 +69,22 @@ export default function Projects(): React.JSX.Element {
   return (
     <div className="bg-raisin-black">
       <div className="min-h-screen container mx-auto px-6 py-14 bg-raisin-black">
-        <h2 className="text-champagne-pink hover:text-papaya-whip transition-colors duration-300 text-4xl font-bold mb-12 tracking-tight font-sans">
-          projects
-        </h2>
-
+        <h1 className="text-4xl text-papaya-whip mb-4 tracking-tighter leading-tight font-sans">
+            projects
+          </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <Link
               key={index}
               href={project.link}
-              className="group block focus:outline-none"
+              className="group block h-full focus:outline-none"
               target={project.link.startsWith('http') ? '_blank' : undefined}
               rel={project.link.startsWith('http') ? 'noopener noreferrer' : undefined}
             >
               {/* gradient border wrapper */}
-              <div className="p-[1px] rounded-xl bg-gradient-to-br from-plum via-chinese-violet to-moss-green transition-transform duration-300 group-hover:-translate-y-1">
+              <div className="p-[1px] h-full rounded-xl bg-gradient-to-br from-plum via-chinese-violet to-moss-green transition-transform duration-300 group-hover:-translate-y-1">
                 {/* card */}
-                <div className="rounded-[10px] overflow-hidden bg-van-dyke/80 backdrop-blur-sm">
+                <div className="rounded-[10px] h-full flex flex-col overflow-hidden bg-van-dyke/80 backdrop-blur-sm">
                   {/* image */}
                   <div className="relative aspect-video overflow-hidden">
                     <Image
@@ -104,15 +103,15 @@ export default function Projects(): React.JSX.Element {
                   </div>
 
                   {/* content */}
-                  <div className="p-5">
+                  <div className="p-5 flex-1 flex flex-col">
                     <h3 className="text-papaya-whip text-lg font-semibold tracking-tight group-hover:drop-shadow-glow">
                       {project.name}
                     </h3>
-                    <p className="mt-2 text-champagne-pink/80 text-sm leading-relaxed">
+                    <p className="mt-2 text-champagne-pink/80 text-sm leading-relaxed line-clamp-3">
                       {project.description}
                     </p>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {project.techStack.map((tech, i) => (
+                    <div className="mt-auto flex flex-wrap gap-2">
+                      {project.techStack.slice(0,3).map((tech, i) => (
                         <span
                           key={i}
                           className="rounded-full bg-chinese-violet/80 hover:bg-plum transition-colors duration-300 px-3 py-1 text-xs font-medium text-papaya-whip"
