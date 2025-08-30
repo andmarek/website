@@ -116,33 +116,33 @@ function SpotifyPlaylists() {
               <img
                 src={item.track.album.images[0]?.url}
                 alt={`${item.track.name} album cover`}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover z-0"
               />
               
-              {/* Desktop hover overlay */}
-              <div className="hidden sm:flex absolute inset-0 bg-black bg-opacity-85 group-hover:opacity-100 opacity-0 transition-all duration-300 items-center justify-center">
+              {/* Desktop hover overlay - black background, themed text */}
+              <div className="hidden sm:flex absolute inset-0 z-10 bg-[#000000cc] opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-center pointer-events-none">
                 <div className="text-center p-2">
-                  <h3 className="text-white font-semibold text-sm mb-1 line-clamp-2">
+                  <h3 className="text-papaya-whip font-semibold text-sm mb-1 line-clamp-2">
                     {item.track.name}
                   </h3>
-                  <p className="text-gray-300 text-xs line-clamp-1">
+                  <p className="text-cinereous text-xs line-clamp-1">
                     {item.track.artists[0].name}
                   </p>
                 </div>
               </div>
 
               {/* Mobile tap overlay */}
-              <div className={`sm:hidden absolute inset-0 bg-black bg-opacity-85 transition-all duration-300 flex items-center justify-center ${
+              <div className={`sm:hidden absolute inset-0 z-10 bg-[#000000f2] transition-opacity duration-300 flex items-center justify-center ${
                 isActive ? 'opacity-100' : 'opacity-0'
               }`}>
-                <div className="text-center p-3">
-                  <h3 className="text-white font-semibold text-sm mb-2 line-clamp-2">
+                <div className="text-center p-3 pointer-events-none">
+                  <h3 className="text-papaya-whip font-semibold text-sm mb-2 line-clamp-2">
                     {item.track.name}
                   </h3>
-                  <p className="text-gray-300 text-xs mb-2 line-clamp-1">
+                  <p className="text-cinereous text-xs mb-2 line-clamp-1">
                     {item.track.artists[0].name}
                   </p>
-                  <p className="text-gray-400 text-xs">
+                  <p className="text-chinese-violet text-xs">
                     Tap again to open in Spotify
                   </p>
                 </div>
