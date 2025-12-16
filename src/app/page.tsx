@@ -1,8 +1,7 @@
 "use client";
-import { useState } from "react";
+
 import Hero from "../components/Hero";
 import Link from "next/link";
-
 
 interface HomeLinkWrapperProps {
   hrefProp: string;
@@ -16,19 +15,11 @@ const HomeLinkWrapper: React.FC<HomeLinkWrapperProps> = ({ hrefProp, text }) => 
 }
 
 export default function Home() {
-  const [loaded, setLoaded] = useState(false)
-
-  const handleLoadedChange = (updatedLoad: boolean) => {
-    setLoaded(updatedLoad);
-  };
-
   return (
     <div>
-      <main className="bg-raisin-black flex min-h-screen flex-col items-center">
-        <div className="items-center justify-between font-sans text-sm">
-          <Hero onUpdateLoadState={handleLoadedChange} />
-        </div>
-        <div className={`font-sans transition-opacity duration-1000 ease-in-out flex items-center space-x-4 justify-between text-sm ${loaded ? 'opacity-100' : 'opacity-0'}`}>
+      <main className="bg-raisin-black min-h-screen">
+        <Hero />
+        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-20 font-sans flex items-center space-x-6 text-sm">
           <HomeLinkWrapper hrefProp="https://github.com/andmarek" text="github" />
           <HomeLinkWrapper hrefProp="https://twitter.com/AndrewMarek" text="twitter" />
           <HomeLinkWrapper hrefProp="https://www.strava.com/athletes/16371872" text="strava" />
