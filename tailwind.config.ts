@@ -10,6 +10,7 @@ const config: Config = {
     colors: {
       "moss-green": "#959A6B",
       "raisin-black": "#2D2424",
+      "gruvbox-bg": "#282828",
       "licorice": "#1A515",
       "van-dyke": "#453636",
       "wenge": "#725A5A",
