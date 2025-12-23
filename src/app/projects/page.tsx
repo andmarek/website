@@ -67,60 +67,47 @@ export default function Projects(): React.JSX.Element {
 
   ];
   return (
-    <div className="bg-raisin-black">
-      <div className="min-h-screen container mx-auto px-6 py-14 bg-raisin-black">
-        <h1 className="text-4xl text-papaya-whip mb-4 tracking-tighter leading-tight font-sans">
-            projects
-          </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="bg-raisin-black min-h-screen px-6 py-12">
+      <div className="max-w-3xl mx-auto">
+        <h1 className="text-3xl font-medium text-papaya-whip mb-10 tracking-tight">
+          projects
+        </h1>
+        <div className="flex flex-col divide-y divide-wenge/30">
           {projects.map((project, index) => (
             <Link
               key={index}
               href={project.link}
-              className="group block h-full focus:outline-none"
+              className="group py-6 first:pt-0 last:pb-0 flex gap-6 items-start"
               target={project.link.startsWith('http') ? '_blank' : undefined}
               rel={project.link.startsWith('http') ? 'noopener noreferrer' : undefined}
             >
-              {/* gradient border wrapper */}
-              <div className="p-[1px] h-full rounded-xl bg-gradient-to-br from-plum via-chinese-violet to-moss-green transition-transform duration-300 group-hover:-translate-y-1">
-                {/* card */}
-                <div className="rounded-[10px] h-full flex flex-col overflow-hidden bg-van-dyke/80 backdrop-blur-sm">
-                  {/* image */}
-                  <div className="relative aspect-video overflow-hidden">
-                    <Image
-                      src={project.imagePath}
-                      alt={project.name}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                    />
-                    {/* subtle overlay on hover */}
-                    <div className="absolute inset-0 bg-[#00000066] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    {/* top-right tag */}
-                    <div className="absolute top-3 right-3 rounded-full bg-raisin-black/70 px-3 py-1 text-xs text-papaya-whip">
-                      view project
-                    </div>
-                  </div>
+              <div className="relative w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0 rounded-lg overflow-hidden bg-van-dyke">
+                <Image
+                  src={project.imagePath}
+                  alt={project.name}
+                  fill
+                  sizes="128px"
+                  className="object-cover"
+                />
+              </div>
 
-                  {/* content */}
-                  <div className="p-5 flex-1 flex flex-col">
-                    <h3 className="text-papaya-whip text-lg font-semibold tracking-tight group-hover:drop-shadow-glow">
-                      {project.name}
-                    </h3>
-                    <p className="mt-2 text-champagne-pink/80 text-sm leading-relaxed line-clamp-3">
-                      {project.description}
-                    </p>
-                    <div className="mt-auto flex flex-wrap gap-2">
-                      {project.techStack.slice(0,3).map((tech, i) => (
-                        <span
-                          key={i}
-                          className="rounded-full bg-chinese-violet/80 hover:bg-plum transition-colors duration-300 px-3 py-1 text-xs font-medium text-papaya-whip"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-papaya-whip font-medium tracking-tight group-hover:text-champagne-pink transition-colors duration-200">
+                  {project.name}
+                  <span className="inline-block ml-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">↗</span>
+                </h3>
+                <p className="mt-1 text-cinereous text-sm leading-relaxed">
+                  {project.description}
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {project.techStack.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="text-xs text-chinese-violet"
+                    >
+                      {tech}{i < project.techStack.length - 1 ? ' ·' : ''}
+                    </span>
+                  ))}
                 </div>
               </div>
             </Link>
