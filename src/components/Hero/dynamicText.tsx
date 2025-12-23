@@ -24,8 +24,8 @@ export default function DynamicText() {
   }, []);
 
   return (
-    <h1 className={`transition-all duration-500 ease-in-out ${animation}`}>
+    <p className={`text-lg sm:text-xl md:text-2xl mt-2 text-cinereous tracking-tight transition-all duration-500 ease-in-out ${animation}`}>
       {phrases[index]}
-    </h1>
+    </p>
   );
 }

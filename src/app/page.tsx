@@ -11,7 +11,12 @@ interface HomeLinkWrapperProps {
 
 const HomeLinkWrapper: React.FC<HomeLinkWrapperProps> = ({ hrefProp, text }) => {
   return (
-    <Link className="text-xl text-champagne-pink hover:text-papaya-whip transition-all duration-500" href={hrefProp}> {text} </Link>
+    <Link 
+      className="text-base text-cinereous hover:text-papaya-whip transition-colors duration-200" 
+      href={hrefProp}
+    >
+      {text}
+    </Link>
   )
 }
 
@@ -23,18 +28,16 @@ export default function Home() {
   };
 
   return (
-    <div>
-      <main className="bg-raisin-black flex min-h-screen flex-col items-center">
-        <div className="items-center justify-between font-sans text-sm">
-          <Hero onUpdateLoadState={handleLoadedChange} />
-        </div>
-        <div className={`font-sans transition-opacity duration-1000 ease-in-out flex items-center space-x-4 justify-between text-sm ${loaded ? 'opacity-100' : 'opacity-0'}`}>
-          <HomeLinkWrapper hrefProp="https://github.com/andmarek" text="github" />
-          <HomeLinkWrapper hrefProp="https://twitter.com/AndrewMarek" text="twitter" />
-          <HomeLinkWrapper hrefProp="https://www.strava.com/athletes/16371872" text="strava" />
-          <HomeLinkWrapper hrefProp="https://www.linkedin.com/in/andmarek/" text="linkedin" />
-        </div>
-      </main>
-    </div>
+    <main className="bg-raisin-black flex min-h-screen flex-col items-center">
+      <div className="w-full">
+        <Hero onUpdateLoadState={handleLoadedChange} />
+      </div>
+      <div className={`transition-opacity duration-1000 ease-in-out flex items-center gap-6 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
+        <HomeLinkWrapper hrefProp="https://github.com/andmarek" text="github" />
+        <HomeLinkWrapper hrefProp="https://twitter.com/AndrewMarek" text="twitter" />
+        <HomeLinkWrapper hrefProp="https://www.strava.com/athletes/16371872" text="strava" />
+        <HomeLinkWrapper hrefProp="https://www.linkedin.com/in/andmarek/" text="linkedin" />
+      </div>
+    </main>
   );
 }

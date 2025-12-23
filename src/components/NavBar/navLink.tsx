@@ -7,7 +7,12 @@ interface NavLinkProps {
 }
 
 export default function NavLink(props: NavLinkProps): React.JSX.Element {
-    return <Link className="font-sans hover:drop-shadow-glow hover:text-papaya-whip text-champagne-pink transition-all duration-500" href={props.destination}>
-        {props.linkText}
-    </Link>
+    return (
+        <Link 
+            className="text-base text-cinereous hover:text-papaya-whip transition-colors duration-200" 
+            href={props.destination}
+        >
+            {props.linkText}
+        </Link>
+    );
 }
