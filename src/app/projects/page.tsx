@@ -99,13 +99,13 @@ export default function Projects(): React.JSX.Element {
                 <p className="mt-1 text-cinereous text-sm leading-relaxed">
                   {project.description}
                 </p>
-                <div className="mt-3 flex flex-wrap gap-2">
+                <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1">
                   {project.techStack.map((tech, i) => (
                     <span
                       key={i}
-                      className="text-xs text-chinese-violet"
+                      className="text-xs font-mono text-chinese-violet tracking-normal"
                     >
-                      {tech}{i < project.techStack.length - 1 ? ' ·' : ''}
+                      {tech}
                     </span>
                   ))}
                 </div>

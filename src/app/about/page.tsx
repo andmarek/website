@@ -157,37 +157,44 @@ function SpotifyPlaylists() {
 
 export default function About() {
   return (
-    <div className="bg-raisin-black text-cinereous min-h-screen px-6 py-12">
-      <div className="max-w-xl mx-auto">
-        <div id="intro" className="mb-16">
-          <h1 className="text-3xl font-medium text-papaya-whip mb-6 tracking-tight">
+    <div className="bg-raisin-black text-cinereous min-h-screen px-6 py-16">
+      <div className="max-w-prose mx-auto">
+        <section className="mb-20">
+          <h1 className="text-3xl font-medium text-papaya-whip mb-8 tracking-tighter">
             about
           </h1>
-          <div className="flex-col space-y-4">
-            <p className="text-base leading-relaxed">
+          <div className="space-y-5 text-base">
+            <p>
               I&apos;m a software engineer living in Seattle.
             </p>
-            <p className="text-base leading-relaxed">
+            <p>
               I work at Optum, where I create analytics tools for healthcare support engineers.
             </p>
-            <p className="text-base leading-relaxed">
-              I&apos;m from Chicago, but lived in Iowa for a few years while I got my BS in Software Engineering from Iowa State University.
+            <p>
+              I&apos;m from Chicago, but lived in Iowa for a few years while I got my BS in Software Engineering from <span className="font-mono text-sm">Iowa State University</span>.
             </p>
-            <p className="text-base leading-relaxed">
-              I&apos;m an avid competitive long distance runner and fan! Feel free to follow me on <Link href="https://www.strava.com/athletes/16371872" className="text-papaya-whip hover:text-champagne-pink transition-colors underline underline-offset-2">Strava</Link>.
+            <p>
+              I&apos;m an avid competitive long distance runner and fan! Feel free to follow me on{" "}
+              <Link 
+                href="https://www.strava.com/athletes/16371872" 
+                className="text-papaya-whip hover:text-champagne-pink transition-colors underline underline-offset-4 decoration-wenge/50 hover:decoration-champagne-pink"
+              >
+                Strava
+              </Link>.
             </p>
           </div>
-        </div>
+        </section>
 
-        <h2 className="text-3xl font-medium text-papaya-whip mb-6 tracking-tight">
-          current 10
-        </h2>
-        <div>
-          <p className="text-base leading-relaxed mb-6">
-            I listen to a lot of music, and I maintain a playlist of the current 10 songs I have in rotation. Below is what&apos;s currently on the list (powered by Spotify).
+        <section>
+          <h2 className="text-2xl font-medium text-papaya-whip mb-6 tracking-tighter">
+            current 10
+          </h2>
+          <p className="text-base mb-8">
+            I listen to a lot of music, and I maintain a playlist of the current 10 songs I have in rotation. Below is what&apos;s currently on the list{" "}
+            <span className="font-mono text-sm text-chinese-violet">(powered by Spotify)</span>.
           </p>
           <SpotifyPlaylists />
-        </div>
+        </section>
       </div>
     </div>
   );

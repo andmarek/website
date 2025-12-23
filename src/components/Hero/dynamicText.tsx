@@ -24,7 +24,7 @@ export default function DynamicText() {
   }, []);
 
   return (
-    <p className={`text-lg sm:text-xl md:text-2xl mt-2 text-cinereous tracking-tight transition-all duration-500 ease-in-out ${animation}`}>
+    <p className={`text-base sm:text-lg font-mono mt-3 text-chinese-violet tracking-normal transition-all duration-500 ease-in-out ${animation}`}>
       {phrases[index]}
     </p>
   );

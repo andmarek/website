@@ -21,6 +21,26 @@ const config: Config = {
       "plum": "#7B3D79",
     },
     extend: {
+      fontSize: {
+        'xs': ['0.9375rem', { lineHeight: '1.5' }],    // 15px
+        'sm': ['1.0625rem', { lineHeight: '1.5' }],    // 17px
+        'base': ['1.25rem', { lineHeight: '1.6' }],    // 20px
+        'lg': ['1.375rem', { lineHeight: '1.6' }],     // 22px
+        'xl': ['1.5rem', { lineHeight: '1.5' }],       // 24px
+        '2xl': ['1.875rem', { lineHeight: '1.4' }],    // 30px
+        '3xl': ['2.25rem', { lineHeight: '1.3' }],     // 36px
+        '4xl': ['2.75rem', { lineHeight: '1.2' }],     // 44px
+        '5xl': ['3.5rem', { lineHeight: '1.1' }],      // 56px
+        '6xl': ['4.5rem', { lineHeight: '1.05' }],     // 72px
+      },
+      letterSpacing: {
+        'tighter': '-0.03em',
+        'tight': '-0.015em',
+        'normal': '-0.01em',  // Slightly tighter default for Geist
+      },
+      maxWidth: {
+        'prose': '65ch',
+      },
       keyframes: {
         blink: {
           '0%, 100%': { opacity: '1' },
