@@ -1,21 +1,33 @@
-"use client";
-
+import { useState } from "react";
+import Image from "next/image";
 import DynamicText from "./dynamicText";
-import GenerativeArt from "../GenerativeArt";
 
-export default function Hero(): React.JSX.Element {
+export default function Hero({ onUpdateLoadState }: { onUpdateLoadState: (state: boolean) => void }): React.JSX.Element {
+  const [loaded, setLoaded] = useState(false);
+
+  const handleLoad = () => {
+    setLoaded(true);
+    onUpdateLoadState(true);
+  };
+
   return (
-    <div className="relative min-h-screen flex items-center justify-center">
-      <GenerativeArt />
-      <div className="relative z-10 text-center p-8" style={{ textShadow: "0 4px 20px #282828, 0 0 60px #282828, 0 0 100px #282828" }}>
-        <h1 className="text-2xl sm:text-3xl md:text-4xl text-champagne-pink font-sans mb-2">
-          Hello, I&apos;m
-        </h1>
-        <h1 className="text-5xl sm:text-7xl md:text-8xl text-papaya-whip font-sans font-bold mb-4 tracking-tight">
-          Andrew Marek
-        </h1>
-        <div className="text-2xl sm:text-3xl md:text-4xl text-champagne-pink font-sans">
+    <div className="text-champagne-pink flex flex-col items-center m-4 sm:m-10 md:m-20 font-sans">
+      <div className={`transition-opacity duration-1000 ease-in-out container w-full flex flex-col sm:flex-row items-center p-4 sm:p-10 justify-center ${loaded ? 'opacity-100' : 'opacity-0'}`}>
+        <div id="intro" className="text-2xl sm:text-3xl md:text-4xl p-4 sm:p-5 text-center sm:text-left">
+          <h1>Hello, I&apos;m</h1>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl text-papaya-whip">
+            Andrew Marek
+          </h1>
           <DynamicText />
+        </div>
+        <div className="mt-8 sm:mt-0">
+          <Image
+            alt="me_downscaled"
+            height={500}
+            width={500}
+            src="/me_downscaled_v6.png"
+            onLoad={handleLoad}
+          />
         </div>
       </div>
     </div>
