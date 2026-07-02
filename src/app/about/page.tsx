@@ -36,11 +36,20 @@ type Playlist = {
   }[];
 };
 
-const fetcher = (url: string) => fetch(url).then((r) => r.json());
+const fetcher = async (url: string) => {
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch Spotify playlist.");
+  }
+
+  return response.json();
+};
 
 function useSpotifyPlaylists() {
   const { data, error } = useSWR<Playlist>("/api/spotify", fetcher, {
-    refreshInterval: 10000,
+    revalidateOnFocus: false,
+    shouldRetryOnError: false,
   });
   return {
     playlists: data,
