@@ -190,8 +190,7 @@ export default function About() {
             current 10
           </h2>
           <p className="text-base mb-8">
-            I listen to a lot of music, and I maintain a playlist of the current 10 songs I have in rotation. Below is what&apos;s currently on the list{" "}
-            <span className="font-mono text-sm text-chinese-violet">(powered by Spotify)</span>.
+            I listen to a lot of music, and I maintain a playlist of the current 10 songs I have in rotation. Below is what&apos;s currently on the list.
           </p>
           <SpotifyPlaylists />
         </section>
